@@ -3,6 +3,8 @@ import os
 import uuid
 from datetime import date, datetime
 from pathlib import Path
+from github import Github
+from io import StringIO
 
 import pandas as pd
 import streamlit as st
@@ -209,6 +211,12 @@ def append_record2(record):
 
     # 9. Overwrite the file with the updated matrix grid
     grid_df.to_csv(MATRIX_FILE, index=True, encoding="utf-8")
+    repo = Github(st.secrets["github_token"]).get_repo(st.secrets["github_repo"])
+    sha = repo.get_contents("wildlife_data/submissions2.csv", ref="main").sha
+    repo.update_file("wildlife_data/submissions2.csv", "Update CSV", MATRIX_FILE.read_text(), sha, branch="main")
+    sha1 = repo.get_contents("wildlife_data/submissions.csv", ref="main").sha
+    repo.update_file("wildlife_data/submissions.csv", "Update CSV", CSV_FILE.read_text(), sha1, branch="main")
+
 
 
 # --------------------------------------------------
