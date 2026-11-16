@@ -219,6 +219,7 @@ def append_record2(record):
         content=MATRIX_FILE,
         sha=contents.sha,
         branch="main"
+    )
 
 
 
