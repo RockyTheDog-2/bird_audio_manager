@@ -12,8 +12,8 @@ from github import Github
 # Page setup and storage
 # --------------------------------------------------
 
-g = Github(st.secrets[github_token])
-repo = g.get_repo(st.secrets[github_repo])
+g = Github(st.secrets["github_token"])
+repo = g.get_repo(st.secrets["github_repo"])
 
 st.set_page_config(
     page_title="Bird Observation Form",
