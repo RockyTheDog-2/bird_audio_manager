@@ -12,14 +12,14 @@ from github import Github
 # Page setup and storage
 # --------------------------------------------------
 
-g = Github(st.secrets["github_token"])
-repo = g.get_repo(st.secrets["github_repo"])
-
 st.set_page_config(
     page_title="Bird Observation Form",
     page_icon="🐦",
     layout="wide",
 )
+
+g = Github(st.secrets["github_token"])
+repo = g.get_repo(st.secrets["github_repo"])
 
 # Assumes this file is inside your project's pages folder.
 PROJECT_DIR = Path(__file__).resolve().parent.parent
@@ -218,7 +218,7 @@ def append_record2(record):
     repo.update_file(
         path=file_path,
         message="Update CSV via Streamlit",
-        content=MATRIX_FILE,
+        content=grid_df.to_csv(MATRIX_FILE, index=True, encoding="utf-8"),
         sha=contents.sha,
         branch="main"
     )
@@ -531,9 +531,8 @@ if submitted:
                 "if the app is deployed to some hosting platforms."
             )
 
-            except Exception as error:
-                st.error(
-                    "The submission could not be saved. "
-                    f"Details: {type(error).__name__}: {error}"
-                )
-                st.exception(error)
+        except Exception as error:
+            st.error(
+                "The submission could not be saved. "
+                f"Details: {error}"
+            )
