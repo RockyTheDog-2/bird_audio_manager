@@ -213,6 +213,7 @@ def append_record2(record):
 
     # 9. Overwrite the file with the updated matrix grid
     grid_df.to_csv(MATRIX_FILE, index=True, encoding="utf-8")
+    contents = repo.get_contents(MATRIX_FILE, ref="main")
     repo.update_file(
         path=MATRIX_FILE,
         message="Update CSV via Streamlit",
