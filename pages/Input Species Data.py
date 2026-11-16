@@ -3,10 +3,9 @@ import os
 import uuid
 from datetime import date, datetime
 from pathlib import Path
+
 import pandas as pd
 import streamlit as st
-from io import StringIO
-from github import Github
 
 # --------------------------------------------------
 # Page setup and storage
@@ -17,9 +16,6 @@ st.set_page_config(
     page_icon="🐦",
     layout="wide",
 )
-
-g = Github(st.secrets["github_token"])
-repo = g.get_repo(st.secrets["github_repo"])
 
 # Assumes this file is inside your project's pages folder.
 PROJECT_DIR = Path(__file__).resolve().parent.parent
@@ -212,17 +208,7 @@ def append_record2(record):
         grid_df = grid_df.reindex(sorted(grid_df.columns), axis=1)
 
     # 9. Overwrite the file with the updated matrix grid
-    file_path = "wildlife_data/submissions2.csv"
     grid_df.to_csv(MATRIX_FILE, index=True, encoding="utf-8")
-    contents = repo.get_contents(file_path, ref="main")
-    repo.update_file(
-        path=file_path,
-        message="Update CSV via Streamlit",
-        content=grid_df.to_csv(MATRIX_FILE, index=True, encoding="utf-8"),
-        sha=contents.sha,
-        branch="main"
-    )
-
 
 
 # --------------------------------------------------
@@ -380,10 +366,10 @@ with st.form("bird_observation_form", clear_on_submit=False):
 # --------------------------------------------------
 
 if submitted:
-    expected_pin = str(st.secrets.get(
+    expected_pin = st.secrets.get(
         "submission_pin",
         os.environ.get("submission_pin", ""),
-    ))
+    )
 
     if not expected_pin:
         st.error(
