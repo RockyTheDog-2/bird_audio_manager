@@ -531,8 +531,9 @@ if submitted:
                 "if the app is deployed to some hosting platforms."
             )
 
-        except Exception as error:
+                except Exception as error:
             st.error(
                 "The submission could not be saved. "
-                f"Details: {error}"
+                f"Details: {type(error).__name__}: {error}"
             )
+            st.exception(error)
