@@ -212,10 +212,11 @@ def append_record2(record):
         grid_df = grid_df.reindex(sorted(grid_df.columns), axis=1)
 
     # 9. Overwrite the file with the updated matrix grid
+    file_path = "wildlife_data/submissions2.csv"
     grid_df.to_csv(MATRIX_FILE, index=True, encoding="utf-8")
-    contents = repo.get_contents(MATRIX_FILE, ref="main")
+    contents = repo.get_contents(file_path, ref="main")
     repo.update_file(
-        path=MATRIX_FILE,
+        path=file_path,
         message="Update CSV via Streamlit",
         content=MATRIX_FILE,
         sha=contents.sha,
