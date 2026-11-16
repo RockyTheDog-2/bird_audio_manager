@@ -378,10 +378,10 @@ with st.form("bird_observation_form", clear_on_submit=False):
 # --------------------------------------------------
 
 if submitted:
-    expected_pin = st.secrets.get(
+    expected_pin = str(st.secrets.get(
         "submission_pin",
         os.environ.get("submission_pin", ""),
-    )
+    ))
 
     if not expected_pin:
         st.error(
