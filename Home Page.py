@@ -24,10 +24,13 @@ with left_box:
             "The St. Louis Wildlife Project is dedicated to "
             "exploring, documenting, and learning about wildlife "
             "in the St. Louis area."
+            "The St. Louis Wildlife project is also interested in"
+            "things such as how urbanization affects biodiversity,"
+            "and how biodiversity and distribution of species is doing in general."
         )
 
         st.write(
-            "Browse wildlife observations and help build a "
+            "Browse bird observations and help build a "
             "better understanding of the animals that share "
             "our local environment."
         )
