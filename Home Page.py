@@ -42,6 +42,6 @@ with right_box:
         st.write(
             "The Bioluminecent Rams is a robotics FLL team " 
             "that is based in MICDS, a school in "
-            "St. Louis "
+            "St. Louis."
         )
 
