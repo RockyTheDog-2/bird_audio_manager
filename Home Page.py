@@ -40,8 +40,8 @@ with right_box:
         st.subheader("About the Bioluminescent Rams")
 
         st.write(
-            "The Bioluminecent Rams is a robotics FLL time " 
-            "that is based off of MICDS in "
+            "The Bioluminecent Rams is a robotics FLL team " 
+            "that is based in MICDS, a school in "
             "St. Louis "
         )
 
