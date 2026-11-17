@@ -25,7 +25,7 @@ with left_box:
             "exploring, documenting, and learning about wildlife "
             "in the St. Louis area."
             "The St. Louis Wildlife project is also interested in "
-            "things such as how urbanization affects biodiversity,"
+            "things such as how urbanization affects biodiversity, "
             "and how biodiversity and distribution of species is doing in general."
         )
 
