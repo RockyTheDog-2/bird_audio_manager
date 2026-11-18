@@ -1,8 +1,9 @@
 
 from pathlib import Path
-
+from github import Github
 import pandas as pd
 import streamlit as st
+from io import StringIO
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_DIR / "wildlife_data"
@@ -149,6 +150,9 @@ if st.button("Delete selected observation", type="primary"):
                 encoding="utf-8",
             )
             temp_file.replace(CSV_FILE)
+            repo = Github(st.secrets["github_token"]).get_repo(st.secrets["github_repo"])
+            sha = repo.get_contents("wildlife_data/submissions.csv", ref="main").sha
+            repo.update_file("wildlife_data/submissions.csv", "Update CSV", CSV_FILE.read_text(), sha, branch="main")
 
             st.success("Observation deleted successfully.")
             st.rerun()
