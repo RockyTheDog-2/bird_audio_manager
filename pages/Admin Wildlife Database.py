@@ -122,8 +122,8 @@ if audio_files.strip():
         if audio_path.is_relative_to(safe_audio_dir) and audio_path.is_file():
             with open(audio_path, "rb") as audio_file:
                 st.audio(audio_file.read())
-    else:
-        st.write("No audio recordings attached.")
+        else:
+            st.write("No audio recordings attached.")
 
 
 
