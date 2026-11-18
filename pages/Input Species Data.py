@@ -26,6 +26,7 @@ IMAGE_DIR = DATA_DIR / "images"
 AUDIO_DIR = DATA_DIR / "audio"
 CSV_FILE = DATA_DIR / "submissions.csv"
 CSV_FILE2 = DATA_DIR / "submissions2.csv"
+repo = Github(st.secrets["github_token"]).get_repo(st.secrets["github_repo"])
 
 for folder in (DATA_DIR, IMAGE_DIR, AUDIO_DIR):
     folder.mkdir(parents=True, exist_ok=True)
@@ -57,13 +58,14 @@ def save_uploads(uploaded_files, destination_folder, submission_id):
 
     for uploaded_file in uploaded_files or []:
         suffix = Path(uploaded_file.name).suffix.lower()
-
+        
         # Create a unique filename to avoid overwriting files.
         filename = f"{submission_id}_{uuid.uuid4().hex}{suffix}"
         destination = destination_folder / filename
         destination.write_bytes(uploaded_file.getvalue())
-
+        repo.create_file(f"wildlife_data/images/{filename}", f"Add {filename}", uploaded_file.getvalue(), branch="main")
         saved_paths.append(str(destination.relative_to(PROJECT_DIR)))
+        
 
     return saved_paths
 
@@ -211,7 +213,6 @@ def append_record2(record):
 
     # 9. Overwrite the file with the updated matrix grid
     grid_df.to_csv(MATRIX_FILE, index=True, encoding="utf-8")
-    repo = Github(st.secrets["github_token"]).get_repo(st.secrets["github_repo"])
     sha = repo.get_contents("wildlife_data/submissions2.csv", ref="main").sha
     repo.update_file("wildlife_data/submissions2.csv", "Update CSV", MATRIX_FILE.read_text(), sha, branch="main")
     sha1 = repo.get_contents("wildlife_data/submissions.csv", ref="main").sha
