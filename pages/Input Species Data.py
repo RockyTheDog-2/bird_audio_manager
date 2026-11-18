@@ -341,12 +341,6 @@ with st.form("bird_observation_form", clear_on_submit=False):
             accept_multiple_files=True,
         )
 
-    image_files = st.file_uploader(
-        "Upload photographs (optional)",
-        type=["jpg", "jpeg", "png", "webp"],
-        accept_multiple_files=True,
-    )
-
     notes = st.text_area(
         "Additional notes (optional)",
         placeholder=(
@@ -401,9 +395,6 @@ if submitted:
         try:
             saved_audio = save_uploads(
                 audio_files, AUDIO_DIR, submission_id
-            )
-            saved_images = save_uploads(
-                image_files, IMAGE_DIR, submission_id
             )
 
             birdnet_results = []
@@ -462,7 +453,6 @@ if submitted:
                 "location": location.strip(),
                 "observation_date": observation_date.isoformat(),
                 "observation_time": observation_time.strftime("%H:%M"),
-                "image_files": ";".join(saved_images),
                 "audio_files": ";".join(saved_audio),
                 "birdnet_results": json.dumps(birdnet_results),
                 "analysis_errors": "; ".join(analysis_errors),
@@ -481,7 +471,6 @@ if submitted:
             st.write(f"**Bird name(s):** {final_bird_name}")
             st.write(f"**Location:** {location}")
             st.write(f"**Date:** {observation_date}")
-            st.write(f"**Photos saved:** {len(saved_images)}")
             st.write(f"**Audio files saved:** {len(saved_audio)}")
 
             if birdnet_results:
