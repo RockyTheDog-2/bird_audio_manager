@@ -104,27 +104,30 @@ st.write("**Date:**", selected.get("observation_date", "Unknown"))
 st.write("**Location:**", selected.get("location", "Unknown"))
 st.write("**Audio Recordings:**")
 
-audio_files = str(
-    df.loc[selected_id].get("audio_files", "") or ""
-)
+raw_val = df.loc[selected_id].get("audio_files")
+audio_files = str(raw_val).strip() if pd.notna(raw_val) else ""
 
-if audio_files.strip():
+if audio_files:
+    safe_audio_dir = (media_dir / "audio").resolve()
+    found_any = False
+
     for filename in audio_files.split(";"):
         filename = filename.strip()
         if not filename:
             continue
 
-        audio_path = (
-            media_dir / "audio" / Path(filename).name
-        ).resolve()
-        safe_audio_dir = (media_dir / "audio").resolve()
+        audio_path = (safe_audio_dir / Path(filename).name).resolve()
 
         if audio_path.is_relative_to(safe_audio_dir) and audio_path.is_file():
-            with open(audio_path, "rb") as audio_file:
-                st.audio(audio_file.read())
-    else:
-        st.write("No audio recordings attached.")
+            st.audio(audio_path.read_bytes())
+            found_any = True
+        else:
+            st.warning(f"Missing audio file on disk: {audio_path}")
 
+    if not found_any:
+        st.write("No valid audio recordings found.")
+else:
+    st.write("No audio recordings attached.")
 
 
 confirm_delete = st.checkbox(
