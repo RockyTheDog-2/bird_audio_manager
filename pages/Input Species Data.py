@@ -63,7 +63,7 @@ def save_uploads(uploaded_files, destination_folder, submission_id):
         filename = f"{submission_id}_{uuid.uuid4().hex}{suffix}"
         destination = destination_folder / filename
         destination.write_bytes(uploaded_file.getvalue())
-        repo.create_file(f"wildlife_data/images/{filename}", f"Add {filename}", uploaded_file.getvalue(), branch="main")
+        repo.create_file(f"wildlife_data/audio/{filename}", f"Add {filename}", uploaded_file.getvalue(), branch="main")
         saved_paths.append(str(destination.relative_to(PROJECT_DIR)))
         
 
