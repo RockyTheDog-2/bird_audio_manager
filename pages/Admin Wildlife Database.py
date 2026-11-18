@@ -5,6 +5,13 @@ import pandas as pd
 import streamlit as st
 from io import StringIO
 
+st.set_page_config(
+    page_title="Wildlife Database Administration",
+    page_icon="👑",
+    layout="wide",
+)
+
+
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_DIR / "wildlife_data"
 CSV_FILE = DATA_DIR / "submissions.csv"
