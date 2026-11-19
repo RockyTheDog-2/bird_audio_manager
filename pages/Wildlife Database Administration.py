@@ -7,7 +7,7 @@ from io import StringIO
 
 st.set_page_config(
     page_title="Wildlife Database Administration",
-    page_icon="👑",
+    page_icon="https://share.streamlit.io/-/build/favicon.ico",
     layout="wide",
 )
 
