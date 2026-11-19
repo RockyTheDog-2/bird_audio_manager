@@ -28,12 +28,12 @@ if not st.session_state["admin_authenticated"]:
         <style>
         /* Hide the default "Press Enter to submit form" text */
         div[data-testid="InputInstructions"] > span:nth-child(1) {
-            visibility: hidden;
+            font-size: 0;
         }
         /* Insert your custom text */
         div[data-testid="InputInstructions"] > span:nth-child(1)::before {
             content: "Press Enter to unlock";
-            visibility: visible;
+            font-size: 12px;
         }
         </style>
         """,
