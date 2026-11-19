@@ -115,7 +115,7 @@ def identify_bird_audio(acoustic_model, geo_model, audio_path):
         .sort_values("confidence", ascending=False)
     )
 
-    results = results[results["confidence"] >= 0.70].head(5)
+    results = results[results["confidence"] >= 0.76].head(5)
 
     output = []
     for _, row in results.iterrows():
