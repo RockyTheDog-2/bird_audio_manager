@@ -31,7 +31,7 @@ if not st.session_state["admin_authenticated"]:
         type="password",
     )
 
-    if st.button("Unlock administrator page"):
+    if st.form_submit_button("Unlock administrator page"):
         if entered_pin == str(st.secrets["admin_pin"]):
             st.session_state["admin_authenticated"] = True
             st.rerun()
