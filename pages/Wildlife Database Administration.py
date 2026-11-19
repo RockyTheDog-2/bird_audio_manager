@@ -21,6 +21,7 @@ media_dir = PROJECT_DIR / "wildlife_data"
 st.title("Wildlife Database Administration")
 st.write("Administrator access only.")
 
+st.form(
 # Require the administrator PIN.
 if "admin_authenticated" not in st.session_state:
     st.session_state["admin_authenticated"] = False
@@ -37,6 +38,7 @@ if not st.session_state["admin_authenticated"]:
             st.rerun()
         else:
             st.error("Incorrect PIN.")
+        )
 
     st.stop()
 
