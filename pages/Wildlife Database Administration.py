@@ -39,11 +39,6 @@ if not st.session_state["admin_authenticated"]:
 
     st.stop()
 
-        else:
-            st.error("Incorrect PIN.")
-
-    st.stop()
-
 if not CSV_FILE.is_file():
     st.info("There are no saved observations to manage yet.")
     st.stop()
