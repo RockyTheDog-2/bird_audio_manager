@@ -21,27 +21,24 @@ media_dir = PROJECT_DIR / "wildlife_data"
 st.title("Wildlife Database Administration")
 st.write("Administrator access only.")
 
+# Require the administrator PIN.
+if "admin_authenticated" not in st.session_state:
+    st.session_state["admin_authenticated"] = False
 
-with st.form("administrator_pin", clear_on_submit=True):
+if not st.session_state["admin_authenticated"]:
+    entered_pin = st.text_input(
+        "Administrator PIN",
+        type="password",
+    )
 
-    # Require the administrator PIN.
-    if "admin_authenticated" not in st.session_state:
-        st.session_state["admin_authenticated"] = False
+    if st.button("Unlock administrator page"):
+        if entered_pin == str(st.secrets["admin_pin"]):
+            st.session_state["admin_authenticated"] = True
+            st.rerun()
+        else:
+            st.error("Incorrect PIN.")
 
-    if not st.session_state["admin_authenticated"]:
-        entered_pin = st.text_input(
-            "Administrator PIN",
-            type="password",
-        
-        if st.form_submit_button("Unlock administrator page"):
-            if entered_pin == str(st.secrets["admin_pin"]):
-                st.session_state["admin_authenticated"] = True
-                st.rerun()
-            else:
-                st.error("Incorrect PIN.")
-            )
-
-        st.stop()
+    st.stop()
 
 if not CSV_FILE.is_file():
     st.info("There are no saved observations to manage yet.")
