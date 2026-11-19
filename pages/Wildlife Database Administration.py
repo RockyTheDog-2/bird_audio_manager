@@ -21,7 +21,9 @@ media_dir = PROJECT_DIR / "wildlife_data"
 st.title("Wildlife Database Administration")
 st.write("Administrator access only.")
 
-st.form(
+
+with st.form("administrator_pin", clear_on_submit=True):
+
 # Require the administrator PIN.
 if "admin_authenticated" not in st.session_state:
     st.session_state["admin_authenticated"] = False
@@ -30,8 +32,7 @@ if not st.session_state["admin_authenticated"]:
     entered_pin = st.text_input(
         "Administrator PIN",
         type="password",
-    )
-
+        
     if st.form_submit_button("Unlock administrator page"):
         if entered_pin == str(st.secrets["admin_pin"]):
             st.session_state["admin_authenticated"] = True
