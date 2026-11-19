@@ -24,24 +24,24 @@ st.write("Administrator access only.")
 
 with st.form("administrator_pin", clear_on_submit=True):
 
-# Require the administrator PIN.
-if "admin_authenticated" not in st.session_state:
-    st.session_state["admin_authenticated"] = False
+    # Require the administrator PIN.
+    if "admin_authenticated" not in st.session_state:
+        st.session_state["admin_authenticated"] = False
 
-if not st.session_state["admin_authenticated"]:
-    entered_pin = st.text_input(
-        "Administrator PIN",
-        type="password",
+    if not st.session_state["admin_authenticated"]:
+        entered_pin = st.text_input(
+            "Administrator PIN",
+            type="password",
         
-    if st.form_submit_button("Unlock administrator page"):
-        if entered_pin == str(st.secrets["admin_pin"]):
-            st.session_state["admin_authenticated"] = True
-            st.rerun()
-        else:
-            st.error("Incorrect PIN.")
-        )
+        if st.form_submit_button("Unlock administrator page"):
+            if entered_pin == str(st.secrets["admin_pin"]):
+                st.session_state["admin_authenticated"] = True
+                st.rerun()
+            else:
+                st.error("Incorrect PIN.")
+            )
 
-    st.stop()
+        st.stop()
 
 if not CSV_FILE.is_file():
     st.info("There are no saved observations to manage yet.")
