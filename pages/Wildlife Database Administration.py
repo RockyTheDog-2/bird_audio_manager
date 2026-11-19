@@ -23,6 +23,23 @@ st.write("Administrator access only.")
 
 # Require the administrator PIN.
 if not st.session_state["admin_authenticated"]:
+    st.markdown(
+        """
+        <style>
+        /* Hide the default "Press Enter to submit form" text */
+        div[data-testid="InputInstructions"] > span:nth-child(1) {
+            visibility: hidden;
+        }
+        /* Insert your custom text */
+        div[data-testid="InputInstructions"] > span:nth-child(1)::before {
+            content: "Press Enter to unlock";
+            visibility: visible;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    
     with st.form("admin_login_form"):
         entered_pin = st.text_input(
             "Administrator PIN",
