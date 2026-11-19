@@ -22,19 +22,23 @@ st.title("Wildlife Database Administration")
 st.write("Administrator access only.")
 
 # Require the administrator PIN.
-if "admin_authenticated" not in st.session_state:
-    st.session_state["admin_authenticated"] = False
-
 if not st.session_state["admin_authenticated"]:
-    entered_pin = st.text_input(
-        "Administrator PIN",
-        type="password",
-    )
+    with st.form("admin_login_form"):
+        entered_pin = st.text_input(
+            "Administrator PIN",
+            type="password",
+        )
+        submitted = st.form_submit_button("Unlock administrator page")
 
-    if st.button("Unlock administrator page"):
-        if entered_pin == str(st.secrets["admin_pin"]):
-            st.session_state["admin_authenticated"] = True
-            st.rerun()
+        if submitted:
+            if entered_pin == str(st.secrets["admin_pin"]):
+                st.session_state["admin_authenticated"] = True
+                st.rerun()
+            else:
+                st.error("Incorrect PIN.")
+
+    st.stop()
+
         else:
             st.error("Incorrect PIN.")
 
