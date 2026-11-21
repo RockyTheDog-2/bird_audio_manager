@@ -26,7 +26,7 @@ A Streamlit application for recording and reviewing wildlife observations in the
 
 ## Data and privacy
 
-Any observations made, audio uploaded, and changes to the main submissions csv files will be uploaded to your own Github repo if you configure it to do so. Otherwise remove those lines of code in Input_Species_Data.py and Wildlife_Database_Administration.py
+Any observations made, audio uploaded, and changes to the main submissions csv files will be uploaded to your own Github repo if you configure it to do so. Otherwise remove those lines of code in Input_Species_Data.py and Wildlife_Database_Administration.py.
 It will not be uploaded to our repo unless you somehow got a token to do so and configured it that way.
 
 ## AI use disclosure
