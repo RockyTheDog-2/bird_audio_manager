@@ -5,7 +5,6 @@ from datetime import date, datetime
 from pathlib import Path
 from github import Github
 from io import StringIO
-import sys
 
 import pandas as pd
 import streamlit as st
@@ -129,7 +128,7 @@ def identify_bird_audio(acoustic_model, geo_model, audio_path, obs_date=None):
             "score": round(float(row["confidence"]), 4),
         })
 
-    return output, birdnet_week
+    return output
 
 
 def append_record(record):
@@ -413,7 +412,7 @@ if submitted:
 
                             try:
                                 predictions = identify_bird_audio(acoustic_model, geo_model, absolute_path, obs_date=observation_date)
-                                print(f"DEBUG: Running BirdNET for week {birdnet_week}", file=sys.stderr, flush=True)
+                                
                                 birdnet_results.append({
                                     "audio_file": relative_path,
                                     "predictions": predictions,
