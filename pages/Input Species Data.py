@@ -92,6 +92,7 @@ def identify_bird_audio(acoustic_model, geo_model, audio_path, obs_date=None):
 
     target_date = obs_date or date.today()
     birdnet_week = min(48, max(1, (target_date.month - 1) * 4 + (target_date.day - 1) // 7 + 1))
+    st.session_state["last_birdnet_week"] = birdnet_week
 
     geo_predictions = geo_model.predict(
         38.5665,
@@ -472,6 +473,7 @@ if submitted:
             st.write(f"**Location:** {location}")
             st.write(f"**Date:** {observation_date}")
             st.write(f"**Audio files saved:** {len(saved_audio)}")
+            st.write(f"**Week used to identify bird:** {last_birdnet_week}")
 
             if birdnet_results:
                 st.subheader("BirdNET identification results")
