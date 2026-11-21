@@ -22,6 +22,7 @@ with left_box:
             "This project was originally made for a robotics competition in the MICDS team. However, only two people in the team worked on it. We worked with a St. Louis "
             "Wildlife Project researcher to make this possible."
         )
+        st.write(" ")
 
 with right_box:
     with st.container(border=True):
