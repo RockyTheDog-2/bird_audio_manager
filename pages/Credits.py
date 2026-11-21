@@ -24,6 +24,7 @@ with left_box:
         )
         st.write(" ")
         st.write(" ")
+        st.write(" ")
 
 with right_box:
     with st.container(border=True):
