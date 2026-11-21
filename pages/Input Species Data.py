@@ -28,8 +28,6 @@ AUDIO_DIR = DATA_DIR / "audio"
 CSV_FILE = DATA_DIR / "submissions.csv"
 CSV_FILE2 = DATA_DIR / "submissions2.csv"
 repo = Github(st.secrets["github_token"]).get_repo(st.secrets["github_repo"])
-target_date = obs_date or date.today()
-birdnet_week = min(48, max(1, (target_date.month - 1) * 4 + (target_date.day - 1) // 7 + 1))
 
 for folder in (DATA_DIR, IMAGE_DIR, AUDIO_DIR):
     folder.mkdir(parents=True, exist_ok=True)
@@ -93,6 +91,9 @@ def identify_bird_audio(acoustic_model, geo_model, audio_path, obs_date=None):
     if df.empty or not {"species_name", "confidence"}.issubset(df.columns):
         return []
 
+    target_date = obs_date or date.today()
+    birdnet_week = min(48, max(1, (target_date.month - 1) * 4 + (target_date.day - 1) // 7 + 1))
+
     geo_predictions = geo_model.predict(
         38.5665,
         -90.3938,
@@ -128,7 +129,7 @@ def identify_bird_audio(acoustic_model, geo_model, audio_path, obs_date=None):
             "score": round(float(row["confidence"]), 4),
         })
 
-    return output
+    return output, birdnet_week
 
 
 def append_record(record):
