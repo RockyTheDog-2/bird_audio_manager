@@ -28,5 +28,8 @@ with right_box:
         st.subheader("The team:")
         st.write(
             "-Dhruv Bherthepudi"
+        )
+
+        st.write(
             "-Matthew Elliott"
         )
