@@ -413,7 +413,7 @@ if submitted:
 
                             try:
                                 predictions = identify_bird_audio(acoustic_model, geo_model, absolute_path, obs_date=observation_date)
-                                
+                                print(f"DEBUG: Running BirdNET for week {birdnet_week}", file=sys.stderr, flush=True)
                                 birdnet_results.append({
                                     "audio_file": relative_path,
                                     "predictions": predictions,
@@ -521,4 +521,3 @@ if submitted:
                 "The submission could not be saved. "
                 f"Details: {error}"
             )
-print(f"DEBUG: Running BirdNET for week {birdnet_week}", file=sys.stderr, flush=True)
