@@ -1,18 +1,17 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="St. Louis Wildlife Project",
-    page_icon="🌿",
+    page_title="Credits",
+    page_icon="📃",
     layout="wide",
 )
 
 st.title("St. Louis Wildlife Project")
 st.write(
-    "Discover local wildlife, explore observations, "
-    "and learn about the projects making a difference."
+    "Credits"
 )
 
-# EDIT THE TEXT BELOW ANYTIME YOU WANT TO UPDATE YOUR HOMEPAGE.
+# EDIT THE TEXT BELOW ANYTIME YOU WANT TO UPDATE YOUR CREDITS PAGE.
 
 left_box, right_box = st.columns(2, gap="large")
 
@@ -31,8 +30,5 @@ with right_box:
 
         st.write(
             "-Dhruv Bherthepudi"
-        )
-
-        st.write(
             "-Matthew Elliott"
         )
