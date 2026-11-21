@@ -6,9 +6,9 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title("St. Louis Wildlife Project")
+st.title("Credits")
 st.write(
-    "Credits"
+    "Credit where credit's due."
 )
 
 # EDIT THE TEXT BELOW ANYTIME YOU WANT TO UPDATE YOUR CREDITS PAGE.
