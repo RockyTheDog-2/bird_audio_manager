@@ -92,7 +92,7 @@ def identify_bird_audio(acoustic_model, geo_model, audio_path, obs_date=None):
 
     target_date = obs_date or date.today()
     birdnet_week = min(48, max(1, (target_date.month - 1) * 4 + (target_date.day - 1) // 7 + 1))
-    print(birdnet_week)
+    print(f"DEBUG: Running BirdNET for week {birdnet_week}", flush=True)
 
     geo_predictions = geo_model.predict(
         38.5665,
