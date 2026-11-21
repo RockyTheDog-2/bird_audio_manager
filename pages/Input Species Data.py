@@ -310,9 +310,6 @@ with st.form("bird_observation_form", clear_on_submit=False):
             "Date observed *",
             value=date.today(),
             max_value=date.today(),
-            observation_date = st.date_input("Observation Date")
-            st.write("BirdNET week:", min(48, max(1, (observation_date.month - 1) * 4 + (observation_date.day - 1) // 7 + 1)))
-
         )
 
     with col2:
