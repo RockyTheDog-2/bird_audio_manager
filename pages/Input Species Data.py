@@ -102,7 +102,7 @@ def identify_bird_audio(acoustic_model, geo_model, audio_path, obs_date=None):
     geo_df = geo_predictions.to_dataframe() if hasattr(geo_predictions, "to_dataframe") else pd.DataFrame(geo_predictions)
 
     # Keep species with at least a 3% chance of being in your area right now
-    local_species = set(geo_df[geo_df["confidence"] >= 0.03]["species_name"])
+    local_species = set(geo_df[geo_df["confidence"] >= 0.15]["species_name"])
 
     df = df[df["species_name"].isin(local_species)]
 
