@@ -18,7 +18,6 @@ left_box, right_box = st.columns(2, gap="large")
 with left_box:
     with st.container(border=True):
         st.subheader("Where the project came from:")
-
         st.write(
             "This project was originally made for a robotics competition in the MICDS team. However, only two people in the team worked on it. We worked with a St. Louis "
             "Wildlife Project researcher to make this possible.
@@ -27,7 +26,6 @@ with left_box:
 with right_box:
     with st.container(border=True):
         st.subheader("The team:")
-
         st.write(
             "-Dhruv Bherthepudi"
             "-Matthew Elliott"
