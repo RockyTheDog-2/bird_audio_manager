@@ -45,7 +45,7 @@ st.write(
 def load_birdnet_model():
     import birdnet
     acoustic_model = birdnet.load("acoustic", "3.0", "onnx")
-    geo_model = birdnet.load("geo", "3.0", "pb")
+    geo_model = geo_model = birdnet.load("geo", "3.0", "pb")
     return acoustic_model, geo_model
 
 
@@ -71,7 +71,7 @@ def save_uploads(uploaded_files, destination_folder, submission_id):
 
 
 
-def identify_bird_audio(acoustic_model, geo_model, audio_path, obs_date=None):
+def identify_bird_audio(acoustic_model, geo_model, audio_path):
     """Identify bird species and filter out non-local species using BirdNET's geo model."""
     import pandas as pd
     from datetime import date
@@ -90,8 +90,8 @@ def identify_bird_audio(acoustic_model, geo_model, audio_path, obs_date=None):
     if df.empty or not {"species_name", "confidence"}.issubset(df.columns):
         return []
 
-    target_date = obs_date or date.today()
-    birdnet_week = min(48, max(1, (target_date.month - 1) * 4 + (target_date.day - 1) // 7 + 1)
+    today = date.today()
+    birdnet_week = min(48, max(1, (today.month - 1) * 4 + (today.day - 1) // 7 + 1))
 
     geo_predictions = geo_model.predict(
         38.5665,
@@ -411,7 +411,7 @@ if submitted:
                             absolute_path = PROJECT_DIR / relative_path
 
                             try:
-                                predictions = identify_bird_audio(acoustic_model, geo_model, absolute_path, obs_date=observation_date)
+                                predictions = identify_bird_audio(acoustic_model, geo_model, absolute_path)
                                 
                                 birdnet_results.append({
                                     "audio_file": relative_path,
