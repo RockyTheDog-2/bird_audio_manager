@@ -19,7 +19,7 @@ with left_box:
     with st.container(border=True):
         st.subheader("Where the project came from:")
         st.write(
-            "This project was originally made for a robotics competition in the MICDS team. However, only two people in the team worked on it. We worked with a St. Louis "
+            "This project was originally made for a robotics competition in the MICDS team. Two of said people in the team worked on it. We worked with a St. Louis "
             "Wildlife Project researcher to make this possible."
         )
         st.write(" ")
