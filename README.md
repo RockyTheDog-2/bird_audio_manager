@@ -42,8 +42,9 @@ However, please credit Dhruv Bherthepudi and Matthew Elliott for working on it
 
 This project is made possible thanks to:
 
--Streamlit/n
--Python/n
--Tensorflow/n
--Cornell University BirdNET/n
+- Streamlit
+- Python
+- Tensorflow
+- Cornell University BirdNET
+
 Thank you!
