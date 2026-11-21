@@ -299,7 +299,7 @@ with st.form("bird_observation_form", clear_on_submit=False):
             "Cam33",
             "Cam34"]
     location = st.selectbox(
-        "Camera Number*",
+        "Camera Number *",
         cam_selection
     )
 
