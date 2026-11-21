@@ -85,7 +85,7 @@ public_df = df[available_columns].copy()
 public_df = public_df.rename(columns={
     "bird_name": "Species",
     "approximate_count": "Approximate Count",
-    "location": "General Location",
+    "location": "Camera Number",
     "observation_date": "Observation Date",
     "observation_time": "Observation Time",
     "submission_mode": "Identification Method",
@@ -109,12 +109,12 @@ with f1:
         selected_species = []
 
 with f2:
-    if "General Location" in public_df.columns:
+    if "Camera Number" in public_df.columns:
         location_values = sorted(
-            public_df["General Location"].dropna().astype(str).unique()
+            public_df["Camera Number"].dropna().astype(str).unique()
         )
         selected_locations = st.multiselect(
-            "General location", location_values
+            "Camera Number", location_values
         )
     else:
         selected_locations = []
