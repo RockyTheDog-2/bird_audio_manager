@@ -34,10 +34,10 @@ with right_box:
             "-Matthew Elliott"
         )
          st.write(
-            " "
+            "-"
         )
          st.write(
-            " "
+            "-"
         )
          st.write(
             "That's it"
