@@ -473,7 +473,8 @@ if submitted:
             st.write(f"**Location:** {location}")
             st.write(f"**Date:** {observation_date}")
             st.write(f"**Audio files saved:** {len(saved_audio)}")
-            st.write(f"**Week used to identify bird:** {last_birdnet_week}")
+            birdnet_week = st.session_state.get("last_birdnet_week", "")
+            st.write(f"**Week used to identify bird:** {birdnet_week}")
 
             if birdnet_results:
                 st.subheader("BirdNET identification results")
