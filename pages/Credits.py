@@ -23,6 +23,7 @@ with left_box:
             "Wildlife Project researcher to make this possible."
         )
         st.write(" ")
+        st.write(" ")
 
 with right_box:
     with st.container(border=True):
