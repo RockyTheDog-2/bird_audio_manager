@@ -37,7 +37,7 @@ with right_box:
             " "
         )
          st.write(
-            ""
+            " "
         )
          st.write(
             "That's it"
