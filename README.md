@@ -37,3 +37,13 @@ We did indeed use some AI to troubleshoot bugs and make the csv converter, along
 
 If you are going to use this project to use it or change it in any way, feel free!
 However, please credit Dhruv Bherthepudi and Matthew Elliott for working on it
+
+## Credits
+
+This project is made possible thanks to:
+
+-Streamlit
+-Python
+-Tensorflow
+-Cornell University BirdNET
+Thank you!
