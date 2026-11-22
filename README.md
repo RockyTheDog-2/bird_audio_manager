@@ -38,13 +38,10 @@ We did indeed use some AI to troubleshoot bugs and make the csv converter, along
 If you are going to use this project to use it or change it in any way, feel free!
 However, please credit Dhruv Bherthepudi and Matthew Elliott for working on it
 
-## Credits
+## Credits & Acknowledgments
 
-This project is made possible thanks to:
-
-- Streamlit
-- Python
-- Tensorflow
-- Cornell University BirdNET
+- **Bird Identification Model:** [BirdNET](https://cornell.edu) (K. Lisa Yang Center for Conservation Bioacoustics at the Cornell Lab of Ornithology & Chemnitz University of Technology)
+- **Frameworks & Tools:** [Python](https://python.org), [Streamlit](https://streamlit.io), [TensorFlow](https://tensorflow.org), and [PyGithub](https://readthedocs.io)
+- **Research Collaboration:** Developed in partnership with the St. Louis Wildlife Project
 
 Thank you!
